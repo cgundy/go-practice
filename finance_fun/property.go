@@ -5,9 +5,8 @@ type Property struct{
 }
 
 func (p *Property) init(){
-	if p.MonthlyPayment == 0{
-		p.MonthlyPayment = p.MinPayment
-	}
+	p.MonthlyPayment = p.MinPayment
+	p.AmountPayed = p.DownPayment
 }
 
 func (p *Property) CheckMonthlyPayment() float64 {
@@ -16,4 +15,8 @@ func (p *Property) CheckMonthlyPayment() float64 {
 		p.MonthlyPayment = PaymentLeft
 	}
 	return p.MonthlyPayment
+}
+
+func (p *Property) IncreasePayment(amount float64){
+	p.MonthlyPayment = amount
 }
